@@ -1,0 +1,28 @@
+.custom-link {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  left: 2%;
+  height: 2px;
+  background-color: red;
+  bottom: 2px;
+}
+
+.custom-link.text-underline::after {
+  width: 50%;
+}
+
+.custom-link.text-hover::after {
+  transition: width 0.4s ease-in-out, left 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+}
+
+.custom-link.text-hover:hover::after {
+  width: 50%;
+  left: 0%;
+}
