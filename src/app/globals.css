@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+*::selection {
+  @apply bg-emerald-100 dark:bg-purple-400/70;
+}
+
+::-webkit-scrollbar {
+  /* height: 10px; */
+  /* border-radius: 1px solid #d5d5d5; */
+  @apply h-2 w-[6px] rounded-sm border-gray-900 z-[9999];
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-white w-20;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-[#9c9c9c];
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-purple-400;
+}
