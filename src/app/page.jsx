@@ -1,10 +1,9 @@
 
-
 import React from 'react'
 
 const Home = () => {
     return (
-        <div className='w-screen '>
+        <div className=''>
             Home
         </div>
     )

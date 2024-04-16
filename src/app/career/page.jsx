@@ -1,19 +1,18 @@
 "use client"
 
-import ValuesCard from '@/components/careerCard/ValuesCard'
-import Link from 'next/link'
 import React, { useRef } from 'react'
-import { values, benefits, care } from '@/components/careerCard/constant'
-import Rocket from '@/components/bgRocket/Rocket'
-
+import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
+import ValuesCard from '@/components/careerCard/ValuesCard'
 import BenefitsCard from '@/components/careerCard/BenefitsCard'
 import CareCard from '@/components/careerCard/CareCard'
+import Rocket from '@/components/bgRocket/Rocket'
+import { values, benefits, care } from '@/components/careerCard/constant'
 
 const Career = () => {
 
     const heroRef = useRef()
-    const heroRefInView = useInView(heroRef, { margin: "-100px" })
+    const heroRefInView = useInView(heroRef, { once: true })
 
     const heroVariants = {
         initial: { y: '50px', opacity: 0 },
@@ -42,7 +41,7 @@ const Career = () => {
     };
 
     const valuesRef = useRef()
-    const valuesRefInView = useInView(valuesRef, { margin: "-100px" })
+    const valuesRefInView = useInView(valuesRef, { once: true })
 
     const valuesVariants = {
         initial: { y: '50px', opacity: 0 },
@@ -57,7 +56,7 @@ const Career = () => {
     }
 
     const valuesCardRef = useRef()
-    const valuesCardRefInView = useInView(valuesCardRef, { margin: "-100px" })
+    const valuesCardRefInView = useInView(valuesCardRef, { once: true })
 
     const valuesCardVariants = {
         initial: {
@@ -78,10 +77,10 @@ const Career = () => {
 
 
     return (
-        <div className='w-screen h-screen overflow-scroll'>
+        <>
 
             {/* Hero Section */}
-            <div className='relative h-full text-center bg-gradient-to-b from-[#b4b2b2] via-[#b4b2b2]/70 to-white'>
+            <div className='relative min-h-screen text-center bg-gradient-to-b from-[#b4b2b2] via-[#b4b2b2]/70 to-white'>
 
                 <div className=' absolute z-50 flex w-full h-full items-center justify-center bg-[rgba(55, 255, 255, 0.2)] lg:px-32' ref={heroRef}>
 
@@ -128,9 +127,11 @@ const Career = () => {
 
                 </div>
 
+                {/* Background Rocket */}
                 <Rocket />
 
             </div>
+
 
             {/* Values Section */}
             <section className='bg-[#f6f8ff]' >
@@ -180,8 +181,9 @@ const Career = () => {
 
             </section>
 
+
             {/* Benefits Section */}
-            <section className='bg-white flex min-h-screen items-center justify-center'>
+            <section className=' flex min-h-screen items-center justify-center'>
 
                 <div className='py-16 text-center'>
                     <div className='flex flex-col gap-4 pb-10'>
@@ -202,6 +204,7 @@ const Career = () => {
                 </div>
 
             </section>
+
 
             {/* Care Section */}
             <section className='flex min-h-screen items-center justify-center bg-[#ffffe1]'>
@@ -225,8 +228,9 @@ const Career = () => {
                 </div>
             </section>
 
+
             {/* Vacancies Section */}
-            <section className='py-24 bg-white'>
+            <section id='vacancies' className='py-24'>
                 <div className='flex flex-col gap-4 py-24 text-center'>
 
                     <h5 className='text-xl font-semibold text-yellow-500'>
@@ -304,6 +308,7 @@ const Career = () => {
                 </div>
             </section>
 
+
             {/* Newsletter Section */}
             <section className='bg-ui-200 py-20 text-center text-ui-500'>
                 <h4 className='text-xl font-semibold text-ui-700'>
@@ -328,7 +333,8 @@ const Career = () => {
                     </button>
                 </form>
             </section>
-        </div>
+
+        </>
     )
 }
 

@@ -120,3 +120,52 @@ export const care = [
         img: "https://metalogic.com.np/careers/teambuilding.svg"
     },
 ]
+
+export const footerServices = [
+    {
+        id: 1,
+        title: "Custom Software Development",
+        link: "/services/software-development"
+    },
+    {
+        id: 2,
+        title: "Web Development",
+        link: "/services/web-development"
+    },
+    {
+        id: 3,
+        title: "Mobile App Development",
+        link: "/services/mobile-app"
+    },
+    {
+        id: 4,
+        title: "Cloud Computing Services",
+        link: "/services/cloud-computing"
+    },
+    {
+        id: 5,
+        title: "Quality Assurance and Testing",
+        link: "/services/qa"
+    },
+    {
+        id: 6,
+        title: "UI/UX Designing",
+        link: "/services/ui-ux"
+    },
+    {
+        id: 7,
+        title: "Maintenance and Support",
+        link: "/services/support"
+    },
+    {
+        id: 8,
+        title: "Dev Ops",
+        link: "/services/devops"
+    },
+    {
+        id: 9,
+        title: "Blockchain Solutions",
+        link: "/services/blockchain"
+    }
+
+]
