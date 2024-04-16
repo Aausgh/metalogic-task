@@ -74,7 +74,7 @@ const Navbar = () => {
 
                 {/* Mobile Button */}
                 <button className=' lg:hidden text-secondary-400' onClick={() => setIsOpen(true)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokewidth={2} strokelinecap="round" strokelinejoin="round" classname="lucide lucide-menu "><line x1={4} x2={20} y1={12} y2={12} /><line x1={4} x2={20} y1={6} y2={6} /><line x1={4} x2={20} y1={18} y2={18} /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="{2}" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-menu "><line x1={4} x2={20} y1={12} y2={12} /><line x1={4} x2={20} y1={6} y2={6} /><line x1={4} x2={20} y1={18} y2={18} /></svg>
                 </button>
 
             </motion.nav>
@@ -91,7 +91,7 @@ const Navbar = () => {
                     >
 
                         <button className='absolute right-6 top-4' onClick={() => setIsOpen(false)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokewidth={2} strokelinecap="round" strokelinejoin="round" classname="lucide lucide-x "><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x "><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
                         </button>
 
                         <div className=' text-md flex flex-col gap-8 items-center justify-center font-semibold'>

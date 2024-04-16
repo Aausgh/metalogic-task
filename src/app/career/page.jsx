@@ -1,16 +1,21 @@
 "use client"
 
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import ValuesCard from '@/components/careerCard/ValuesCard'
 import BenefitsCard from '@/components/careerCard/BenefitsCard'
 import CareCard from '@/components/careerCard/CareCard'
 import Rocket from '@/components/bgRocket/Rocket'
-import { values, benefits, care } from '@/components/careerCard/constant'
+import { values, benefits, care, vacancy } from '@/components/careerCard/constant'
+import VacancyTable from '@/components/careerCard/VacancyTable'
+import toast from 'react-hot-toast'
 
 const Career = () => {
 
+    const [email, setEmail] = useState('')
+
+    { /* HERO */ }
     const heroRef = useRef()
     const heroRefInView = useInView(heroRef, { once: true })
 
@@ -40,6 +45,8 @@ const Career = () => {
         }
     };
 
+
+    { /* VALUES */ }
     const valuesRef = useRef()
     const valuesRefInView = useInView(valuesRef, { once: true })
 
@@ -74,6 +81,108 @@ const Career = () => {
         })
     };
 
+
+    { /* CARE */ }
+    const careRef = useRef()
+    const careRefInView = useInView(careRef, { once: true })
+
+    const careVariants = {
+        initial: { y: '50px', opacity: 0 },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.6,
+                ease: [0.08, 0.65, 0.53, 0.96],
+            }
+        }
+    }
+
+    const careCardRef = useRef()
+    const careCardRefInView = useInView(careCardRef, { once: true })
+
+    const careCardVariants = {
+        initial: {
+            y: '50px',
+            opacity: 0
+        },
+        animate: (index) => ({
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.6,
+                ease: [0.08, 0.65, 0.53, 0.96],
+                delay: index * 0.2
+            }
+        })
+    };
+
+    { /* VACANCY */ }
+    const vacancyRef = useRef()
+    const vacancyRefInView = useInView(vacancyRef, { once: true })
+
+    const vacancyVariants = {
+        initial: { y: '50px', opacity: 0 },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                when: "beforeChildren",
+                staggerChildren: 0.04,
+                ease: [0.08, 0.65, 0.53, 0.96],
+                duration: 0.2
+            }
+        }
+    };
+
+    const vacancyChildVariants = {
+        initial: { y: '50px', opacity: 0 },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.8,
+                ease: [0.08, 0.65, 0.53, 0.96]
+            }
+        }
+    };
+
+    { /* VACANCYTABLE */ }
+    const vacancyTableRef = useRef()
+    const vacancyTableRefInView = useInView(vacancyTableRef, { once: true })
+
+    const vacancyTableVariants = {
+        initial: { y: '50px', opacity: 0 },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                when: "beforeChildren",
+                staggerChildren: 0.04,
+                ease: [0.08, 0.65, 0.53, 0.96],
+                duration: 0.2
+            }
+        }
+    };
+
+    const vacancyTableChildVariants = {
+        initial: { y: '50px', opacity: 0 },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.8,
+                ease: [0.08, 0.65, 0.53, 0.96]
+            }
+        }
+    };
+
+    const handleSubmit = (e) => {
+
+        e.preventDefault()
+        toast.success('Subscribed Successfully')
+        setEmail('')
+    }
 
 
     return (
@@ -207,22 +316,35 @@ const Career = () => {
 
 
             {/* Care Section */}
-            <section className='flex min-h-screen items-center justify-center bg-[#ffffe1]'>
-                <div className='grid py-16 md:grid-cols-3'>
+            <section className=' py-12 flex  items-center justify-center bg-[#ffffe1]'>
+                <div className='flex flex-col items-center text-center py-16 ' ref={careRef}>
 
-                    <div className='flex flex-col gap-4 px-6 pb-10 md:mx-auto lg:pl-20'>
+                    <motion.div
+                        variants={careVariants}
+                        initial="initial"
+                        animate={careRefInView ? "animate" : "initial"}
+                        className='flex flex-col gap-4 px-6 pb-10 md:mx-auto lg:pl-20'
+                    >
                         <h5 className="text-3xl font-bold text-blue-950">
                             Metalogic Cares For You
                         </h5>
 
-                        <h2 className="text-sm text-ui-500">
+                        <h2 className="text-sm text-ui-500 px-2 md:px-8 lg:px-20 xl:px-40">
                             We're less about valuing perks and more about valuing people. Our employee benefits are built around enhancing your wellbeing - at work and at home
                         </h2>
-                    </div>
+                    </motion.div>
 
-                    <div className='col-span-2 ml-[12%] grid w-[80%] gap-y-8 px-2 text-left md:grid-cols-3 md:gap-y-6 md:px-4 lg:px-12'>
+                    <div className=' flex flex-wrap gap-8 justify-center w-full md:w-[80%] lg:w-[60%]  px-2 text-left  md:gap-y-6 md:px-4 lg:px-12' ref={careCardRef}>
                         {care.map((c, index) => (
-                            <CareCard key={c.id} c={c} index={index} />
+                            <motion.div
+                                key={c.id}
+                                variants={careCardVariants}
+                                custom={index}
+                                initial="initial"
+                                animate={careCardRefInView ? "animate" : "initial"}
+                            >
+                                <CareCard c={c} />
+                            </motion.div>
                         ))}
                     </div>
                 </div>
@@ -231,80 +353,81 @@ const Career = () => {
 
             {/* Vacancies Section */}
             <section id='vacancies' className='py-24'>
-                <div className='flex flex-col gap-4 py-24 text-center'>
+                <div ref={vacancyRef}>
 
-                    <h5 className='text-xl font-semibold text-yellow-500'>
-                        Opportunities
-                    </h5>
+                    <motion.div
+                        variants={vacancyVariants}
+                        initial="initial"
+                        animate={vacancyRefInView ? "animate" : "initial"}
+                        className=' flex flex-col gap-4 py-24 text-center '
+                    >
 
-                    <h2 className='text-4xl font-bold text-blue-950'>
-                        Available Vacancies
-                    </h2>
+                        <motion.div
+                            variants={vacancyChildVariants}
+                            className='flex flex-col gap-4'
+                        >
+                            <h5 className='text-xl font-semibold text-yellow-500'>
+                                Opportunities
+                            </h5>
 
-                    <div className='flex flex-wrap gap-4 px-2 md:mx-auto md:w-[50%]'>
-                        <input
-                            type="text"
-                            placeholder='Job Title/Keyword'
-                            className='flex-1 rounded-lg border p-2 focus:outline-none'
-                        />
+                            <h2 className='text-4xl font-bold text-blue-950'>
+                                Available Vacancies
+                            </h2>
+                        </motion.div>
 
-                        <div className='flex w-full gap-2'>
-
-                            <select
+                        <motion.div
+                            variants={vacancyChildVariants}
+                            className='flex flex-wrap gap-4 px-2 md:mx-auto md:w-[50%]'>
+                            <input
+                                type="text"
+                                placeholder='Job Title/Keyword'
                                 className='flex-1 rounded-lg border p-2 focus:outline-none'
-                            >
-                                <option disabled>Level</option>
-                                <option value="intern">Internships</option>
-                                <option value="junior">Junior Level</option>
-                                <option value="mid">Mid Level</option>
-                                <option value="senior">Senior</option>
-                            </select>
+                            />
 
-                            <button className='rounded-lg bg-secondary-400 px-6 text-white'>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-                            </button>
-                        </div>
-                    </div>
+                            <div className='flex w-full gap-2'>
+
+                                <select
+                                    className='flex-1 rounded-lg border p-2 focus:outline-none'
+                                >
+                                    <option value="intern">Internships</option>
+                                    <option value="junior">Junior Level</option>
+                                    <option value="mid">Mid Level</option>
+                                    <option value="senior">Senior</option>
+                                </select>
+
+                                <button className='rounded-lg bg-secondary-400 px-6 text-white'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-search "><circle cx={11} cy={11} r={8} /><path d="m21 21-4.3-4.3" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
 
-                <div className='mx-auto lg:w-1/2'>
-                    <div className='px-2 py-4 text-lg font-semibold'>
-                        1 Job Offers
-                    </div>
+                <div className='mx-auto lg:w-1/2' ref={vacancyTableRef}>
+                    <motion.div
+                        variants={vacancyTableVariants}
+                        initial="initial"
+                        animate={vacancyTableRefInView ? "animate" : "initial"}
+                    >
+                        <motion.div
+                            variants={vacancyTableChildVariants}
+                            className='px-2 py-4 text-lg font-semibold'
+                        >
+                            {vacancy.length} Job Offers
+                        </motion.div>
 
-                    <div className='pb-10'>
-                        <div className='relative w-full overflow-auto'>
-                            <table className='w-full text-sm'>
-                                <tbody>
-                                    <tr>
-                                        <td className='p-2 align-middle font-semibold'>
-                                            Frontend Intern (MERN Stack)
-                                            <br />
-                                            <span className='text-sm font-normal text-blue-500'>
-                                                (219 applicants)
-                                            </span>
-                                        </td>
-
-                                        <td className='p-2 align-middle'>
-                                            Full Time
-                                        </td>
-
-                                        <td className='p-2 align-middle'>
-                                            Lalitpur, Kathmandu
-                                        </td>
-
-                                        <td className='p-2 align-middle text-right'>
-                                            <span className='flex items-center justify-center gap-1 rounded-full bg-red-100 px-2 py-1 font-medium text-red-600'>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-dot "><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
-
-                                                Closed
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                        <motion.div
+                            variants={vacancyTableChildVariants}
+                            className='pb-10'
+                        >
+                            <div className='relative w-full overflow-auto'>
+                                {vacancy.map((v, index) => (
+                                    <VacancyTable v={v} key={v.id} index={index} />
+                                ))}
+                            </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -319,16 +442,23 @@ const Career = () => {
                     Stay informed, inspired, and equipped with the latest trends and breakthroughs in your field.
                 </p>
 
-                <form className='flex flex-col gap-4 px-4 py-3 sm:flex-row md:mx-auto md:w-1/2'>
+                <form className='flex flex-col gap-4 px-4 py-3 sm:flex-row md:mx-auto md:w-1/2' onSubmit={handleSubmit}>
                     <input
                         type="email"
                         placeholder='Please Enter Your Email'
                         className='h-9 w-full rounded-md px-3 text-sm shadow-sm bg-white py-6'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
                     />
 
-                    <button className='flex h-fit items-center justify-center gap-2 rounded-lg bg-secondary-300 px-4 py-3 text-white'>
+                    <button
+                        type='submit'
+                        className='flex h-fit items-center justify-center gap-2 rounded-lg bg-secondary-300 px-4 py-3 text-white'
+                    >
 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail "><rect width={20} height={16} x={2} y={4} rx={2} /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
                         Subscribe
                     </button>
                 </form>

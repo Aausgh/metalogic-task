@@ -169,3 +169,22 @@ export const footerServices = [
     }
 
 ]
+
+export const vacancy = [
+    {
+        id: 1,
+        title: "Frontend Intern (MERN Stack)",
+        nofapp: 219,
+        type: "Full Time",
+        location: "Lalitpur, Kathmandu",
+        status: "Closed"
+    },
+    {
+        id: 2,
+        title: "Marketing Executive",
+        nofapp: 2,
+        type: "Full Time",
+        location: "Nepal (with potential for international travel)",
+        status: "Opened"
+    }
+]
