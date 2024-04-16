@@ -221,7 +221,7 @@ const Career = () => {
                             className='mx-auto px-4 py-10 md:w-[50%]'
                             variants={heroChildVariants}
                         >
-                            We're continuously searching for the right talent. Check if you're a good match.
+                            We&apos;re continuously searching for the right talent. Check if you&apos;re a good match.
                         </motion.div>
 
                         <motion.button
@@ -330,7 +330,7 @@ const Career = () => {
                         </h5>
 
                         <h2 className="text-sm text-ui-500 px-2 md:px-8 lg:px-20 xl:px-40">
-                            We're less about valuing perks and more about valuing people. Our employee benefits are built around enhancing your wellbeing - at work and at home
+                            We&apos;re less about valuing perks and more about valuing people. Our employee benefits are built around enhancing your wellbeing - at work and at home
                         </h2>
                     </motion.div>
 
