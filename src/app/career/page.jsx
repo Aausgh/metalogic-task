@@ -10,6 +10,8 @@ import Rocket from '@/components/bgRocket/Rocket'
 import { values, benefits, care, vacancy } from '@/components/careerCard/constant'
 import VacancyTable from '@/components/careerCard/VacancyTable'
 import toast from 'react-hot-toast'
+import { FloatButton } from 'antd'
+import { BsInfoLg } from 'react-icons/bs'
 
 const Career = () => {
 
@@ -239,6 +241,20 @@ const Career = () => {
                 {/* Background Rocket */}
                 <Rocket />
 
+                <FloatButton
+                    icon={<BsInfoLg />}
+                    tooltip={
+                        <div className="flex flex-col gap-4">
+                            <p>
+                                I decided to redesign the Careers page using Next.js, keeping the original look but adding some new styles and animations. For example, I changed the animation in the main section to make a rocket land from above instead of launching when the page loads. This new animation fits well with the idea of starting a career.
+                            </p>
+                            <p>
+                                I chose the Careers page because it was the best fit for my skills. The Home and About Us page had animations that were a bit difficult for me to handle completely, while the Services page was too simple. The Careers page was just right, allowing me to show what I can do without being too complex or too easy.
+                            </p>
+                        </div>
+                    }
+                />;
+
             </div>
 
 
@@ -463,6 +479,7 @@ const Career = () => {
                     </button>
                 </form>
             </section>
+
 
         </>
     )

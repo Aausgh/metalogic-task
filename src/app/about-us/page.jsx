@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Services = () => {
+const AboutUs = () => {
     return (
         <div className='h-screen flex justify-center items-center text-3xl'>
-            Services
+            AboutUs
         </div>
     )
 }
 
-export default Services
+export default AboutUs

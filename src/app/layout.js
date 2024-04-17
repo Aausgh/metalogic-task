@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Toaster } from "react-hot-toast";
+import { BsInfoLg } from "react-icons/bs";
+import { FloatButton } from "antd";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +22,7 @@ export default function RootLayout({ children }) {
         <div className="w-screen min-h-screen ">
           {children}
         </div>
+
         <Footer />
       </body>
     </html>
